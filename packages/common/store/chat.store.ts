@@ -235,7 +235,8 @@ const initializeWorker = () => {
 
     try {
         // Create a shared worker
-        dbWorker = new SharedWorker(new URL('./db-sync.worker.ts', import.meta?.url), {
+        const { url } = import.meta;
+        dbWorker = new SharedWorker(new URL('./db-sync.worker.ts', url), {
             type: 'module',
         });
 

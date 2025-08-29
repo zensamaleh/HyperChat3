@@ -16,6 +16,8 @@ const nextConfig = {
     webpack: (config, options) => {
         if (!options.isServer) {
             config.resolve.fallback = { fs: false, module: false, path: false };
+            config.resolve.alias['@sentry/node'] = false;
+            config.resolve.alias['posthog-node'] = false;
         }
         // Experimental features
         config.experiments = {
