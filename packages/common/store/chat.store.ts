@@ -86,7 +86,6 @@ type State = {
         isAuthenticated: boolean;
         isFetched: boolean;
     };
-    isInitialized: boolean;
 };
 
 type Actions = {
@@ -236,8 +235,7 @@ const initializeWorker = () => {
 
     try {
         // Create a shared worker
-        const { url } = import.meta;
-        dbWorker = new SharedWorker(new URL('./db-sync.worker.ts', url), {
+        dbWorker = new SharedWorker(new URL('./db-sync.worker.ts', import.meta?.url), {
             type: 'module',
         });
 
@@ -463,7 +461,6 @@ export const useChatStore = create(
             isFetched: false,
         },
         showSuggestions: true,
-        isInitialized: false,
 
         setCustomInstructions: (customInstructions: string) => {
             const existingConfig = JSON.parse(localStorage.getItem(CONFIG_KEY) || '{}');
@@ -946,7 +943,6 @@ if (typeof window !== 'undefined') {
                 useWebSearch,
                 showSuggestions,
                 customInstructions,
-                isInitialized: true,
             });
 
             // Initialize the shared worker for tab synchronization
