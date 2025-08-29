@@ -4,12 +4,17 @@ import { useChatStore } from '@repo/common/store';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { nanoid } from 'nanoid';
+import { FullPageLoader } from '@repo/common/components';
 
 const ChatPage = () => {
     const router = useRouter();
-    const { currentThreadId, createThread } = useChatStore();
+    const { currentThreadId, createThread, isInitialized } = useChatStore();
 
     useEffect(() => {
+        if (!isInitialized) {
+            return; // Wait for the store to be initialized
+        }
+
         if (currentThreadId) {
             router.push(`/chat/${currentThreadId}`);
         } else {
@@ -18,9 +23,13 @@ const ChatPage = () => {
                 router.push(`/chat/${newThreadId}`);
             });
         }
-    }, [currentThreadId, createThread, router]);
+    }, [isInitialized, currentThreadId, createThread, router]);
 
-    return null; // This page will just handle the redirect, so it doesn't need to render anything.
+    if (!isInitialized) {
+        return <FullPageLoader />; // Show a loader while the store is initializing
+    }
+
+    return null; // Render nothing while redirecting
 };
 
 export default ChatPage;
