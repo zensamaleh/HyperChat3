@@ -28,7 +28,7 @@ export function MessagesRemainingBadge() {
             >
                 <div className="text-muted-foreground/50 text-xs flex items-center gap-2">
                     <IconBrain className="size-4" />
-                    Le mode Brain avec un icône de cerveau est activé
+                    Brain Mode activé : votre assistant passe au niveau supérieur d’intelligence et de personnalisation.
                 </div>
             </motion.div>
         </div>
