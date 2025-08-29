@@ -5,7 +5,6 @@ import { TooltipProvider, cn } from '@repo/ui';
 import { GeistMono } from 'geist/font/mono';
 import type { Viewport } from 'next';
 import { Metadata } from 'next';
-import { ThemeProvider } from 'next-themes';
 import { Bricolage_Grotesque } from 'next/font/google';
 import localFont from 'next/font/local';
 
@@ -17,7 +16,7 @@ const bricolage = Bricolage_Grotesque({
 import './globals.css';
 
 export const metadata: Metadata = {
-    title: 'hyper-fix.vercel.app - Go Deeper with AI-Powered Research & Agentic Workflows',
+    title: 'llmchat.co - Go Deeper with AI-Powered Research & Agentic Workflows',
     description:
         'Experience deep, AI-powered research with agentic workflows and a wide variety of models for advanced productivity.',
     keywords: 'AI chat, LLM, language models, privacy, minimal UI, ollama, chatgpt',
@@ -25,30 +24,30 @@ export const metadata: Metadata = {
     creator: 'Trendy design',
     publisher: 'Trendy design',
     openGraph: {
-        title: 'hyper-fix.vercel.app - Go Deeper with AI-Powered Research & Agentic Workflows',
-        siteName: 'hyper-fix.vercel.app',
+        title: 'llmchat.co - Go Deeper with AI-Powered Research & Agentic Workflows',
+        siteName: 'llmchat.co',
         description:
             'Experience deep, AI-powered research with agentic workflows and a wide variety of models for advanced productivity.',
-        url: 'https://hyper-fix.vercel.app',
+        url: 'https://llmchat.co',
         type: 'website',
         locale: 'en_US',
         images: [
             {
-                url: 'https://hyper-fix.vercel.app/og-image.jpg',
+                url: 'https://llmchat.co/og-image.jpg',
                 width: 1200,
                 height: 630,
-                alt: 'hyper-fix Preview',
+                alt: 'LLMChat Preview',
             },
         ],
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'hyper-fix.vercel.app - Go Deeper with AI-Powered Research & Agentic Workflows',
-        site: 'hyper-fix.vercel.app',
-        creator: '@hyperfix_app',
+        title: 'llmchat.co - Go Deeper with AI-Powered Research & Agentic Workflows',
+        site: 'llmchat.co',
+        creator: '@llmchat_co',
         description:
             'Experience deep, AI-powered research with agentic workflows and a wide variety of models for advanced productivity.',
-        images: ['https://hyper-fix.vercel.app/twitter-image.jpg'],
+        images: ['https://llmchat.co/twitter-image.jpg'],
     },
     robots: {
         index: true,
@@ -62,7 +61,7 @@ export const metadata: Metadata = {
         },
     },
     alternates: {
-        canonical: 'https://hyper-fix.vercel.app',
+        canonical: 'https://llmchat.co',
     },
 };
 
@@ -106,18 +105,18 @@ export default function ParentLayout({
                 {/* <PostHogProvider> */}
                 <ClerkProvider>
                     <RootProvider>
-                        <ThemeProvider
-                            attribute="class"
-                            defaultTheme="light"
-                            enableSystem
-                            disableTransitionOnChange
-                        >
-                            <TooltipProvider>
-                                <ReactQueryProvider>
-                                    <RootLayout>{children}</RootLayout>
-                                </ReactQueryProvider>
-                            </TooltipProvider>
-                        </ThemeProvider>
+                        {/* <ThemeProvider
+            attribute="class"
+            defaultTheme="light"
+            enableSystem
+            disableTransitionOnChange
+          > */}
+                        <TooltipProvider>
+                            <ReactQueryProvider>
+                                <RootLayout>{children}</RootLayout>
+                            </ReactQueryProvider>
+                        </TooltipProvider>
+                        {/* </ThemeProvider> */}
                     </RootProvider>
                 </ClerkProvider>
                 {/* </PostHogProvider> */}
