@@ -5,6 +5,7 @@ import { TooltipProvider, cn } from '@repo/ui';
 import { GeistMono } from 'geist/font/mono';
 import type { Viewport } from 'next';
 import { Metadata } from 'next';
+import { ThemeProvider } from 'next-themes';
 import { Bricolage_Grotesque } from 'next/font/google';
 import localFont from 'next/font/local';
 
@@ -105,18 +106,18 @@ export default function ParentLayout({
                 {/* <PostHogProvider> */}
                 <ClerkProvider>
                     <RootProvider>
-                        {/* <ThemeProvider
-            attribute="class"
-            defaultTheme="light"
-            enableSystem
-            disableTransitionOnChange
-          > */}
-                        <TooltipProvider>
-                            <ReactQueryProvider>
-                                <RootLayout>{children}</RootLayout>
-                            </ReactQueryProvider>
-                        </TooltipProvider>
-                        {/* </ThemeProvider> */}
+                        <ThemeProvider
+                            attribute="class"
+                            defaultTheme="light"
+                            enableSystem
+                            disableTransitionOnChange
+                        >
+                            <TooltipProvider>
+                                <ReactQueryProvider>
+                                    <RootLayout>{children}</RootLayout>
+                                </ReactQueryProvider>
+                            </TooltipProvider>
+                        </ThemeProvider>
                     </RootProvider>
                 </ClerkProvider>
                 {/* </PostHogProvider> */}
